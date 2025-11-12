@@ -1,4 +1,5 @@
 import discord
+import os
 from discord.ext import commands
 
 # --- CONFIGURATION ---
@@ -124,4 +125,5 @@ async def on_ready():
 # RUN
 # ------------------------------------------------------------
 bot.run(os.getenv("MTQzODExMTE4ODk3NzMxOTk0Ng.GzTllP.uUkwjror_99rlJOZ7m5fam9l5iplX57nOm9ejM"))
+
 
