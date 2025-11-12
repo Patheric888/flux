@@ -130,12 +130,9 @@ async def on_ready():
 # ------------------------------------------------------------
 # RUN BOT (Railway compatible)
 # ------------------------------------------------------------
-TOKEN = os.getenv("MTQzODExMTE4ODk3NzMxOTk0Ng.GzTllP.uUkwjror_99rlJOZ7m5fam9l5iplX57nOm9ejM")
+TOKEN = os.getenv("DISCORD_TOKEN")  # ✅ legge la variabile d'ambiente BOT_TOKEN
 
 if TOKEN is None:
     print("❌ BOT_TOKEN not found. Please add it in Railway → Settings → Variables.")
 else:
     bot.run(TOKEN)
-os.getenv("DISCORD_TOKEN")
-
-
