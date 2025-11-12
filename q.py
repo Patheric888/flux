@@ -1,10 +1,10 @@
 import discord
-import os
 from discord.ext import commands
+import os
 
 # --- CONFIGURATION ---
-STAFF_ROLE_ID = 1411414376925233273# <--- replace with your Staff role ID
-TICKET_CATEGORY_ID = 1438258856923893802  # Optional: set category ID for all tickets (int)
+STAFF_ROLE_ID = 1411414376925233273  # 🔹 Replace with your Staff role ID
+TICKET_CATEGORY_ID = 1438258856923893802  # 🔹 Optional: category ID for all tickets (int)
 
 # --- SETUP BOT ---
 intents = discord.Intents.default()
@@ -60,6 +60,12 @@ class TicketSelect(discord.ui.Select):
         # Create the ticket channel
         if TICKET_CATEGORY_ID:
             category_obj = bot.get_channel(TICKET_CATEGORY_ID)
+            if category_obj is None:
+                await interaction.response.send_message(
+                    "⚠️ Ticket category not found. Please check the category ID.",
+                    ephemeral=True
+                )
+                return
             channel = await category_obj.create_text_channel(channel_name, overwrites=overwrites)
         else:
             channel = await guild.create_text_channel(channel_name, overwrites=overwrites)
@@ -116,14 +122,17 @@ async def on_ready():
     print(f"✅ Logged in as {bot.user} | Ready to go!")
     try:
         synced = await bot.tree.sync()
-        print(f"Synced {len(synced)} app commands.")
+        print(f"🔁 Synced {len(synced)} app commands.")
     except Exception as e:
-        print(e)
+        print(f"⚠️ Command sync failed: {e}")
 
 
 # ------------------------------------------------------------
-# RUN
+# RUN BOT (Railway compatible)
 # ------------------------------------------------------------
-bot.run(os.getenv("MTQzODExMTE4ODk3NzMxOTk0Ng.GzTllP.uUkwjror_99rlJOZ7m5fam9l5iplX57nOm9ejM"))
+TOKEN = os.getenv("MTQzODExMTE4ODk3NzMxOTk0Ng.GzTllP.uUkwjror_99rlJOZ7m5fam9l5iplX57nOm9ejM")
 
-
+if TOKEN is None:
+    print("❌ BOT_TOKEN not found. Please add it in Railway → Settings → Variables.")
+else:
+    bot.run(TOKEN)
