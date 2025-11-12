@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 
 # --- CONFIGURATION ---
-TOKEN = "MTQzODExMTE4ODk3NzMxOTk0Ng.GzTllP.uUkwjror_99rlJOZ7m5fam9l5iplX57nOm9ejM"  # <--- replace this
 STAFF_ROLE_ID = 1411414376925233273# <--- replace with your Staff role ID
 TICKET_CATEGORY_ID = 1438258856923893802  # Optional: set category ID for all tickets (int)
 
@@ -124,4 +123,5 @@ async def on_ready():
 # ------------------------------------------------------------
 # RUN
 # ------------------------------------------------------------
-bot.run(TOKEN)
+bot.run(os.getenv("MTQzODExMTE4ODk3NzMxOTk0Ng.GzTllP.uUkwjror_99rlJOZ7m5fam9l5iplX57nOm9ejM"))
+
