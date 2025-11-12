@@ -136,3 +136,6 @@ if TOKEN is None:
     print("❌ BOT_TOKEN not found. Please add it in Railway → Settings → Variables.")
 else:
     bot.run(TOKEN)
+os.getenv("DISCORD_TOKEN")
+
+
